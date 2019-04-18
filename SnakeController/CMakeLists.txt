@@ -8,7 +8,7 @@ set(SNAKE_SOURCES
 set(SNAKE_HEADERS
     SnakeController.hpp
     SnakeInterface.hpp
-)
+        Snake.cpp Snake.h)
 add_library(${TARGET_NAME} STATIC ${SNAKE_SOURCES} ${SNAKE_HEADERS})
 target_link_libraries(${TARGET_NAME} DynamicEvents)
 
