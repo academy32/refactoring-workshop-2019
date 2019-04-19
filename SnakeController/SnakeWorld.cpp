@@ -71,4 +71,6 @@ void World::updateFoodPositionWithCleanPolicy(Position position, const Segments 
     clearPolicy();
     sendPlaceNewFood(position);
 }
+
+
 } // namespace Snake

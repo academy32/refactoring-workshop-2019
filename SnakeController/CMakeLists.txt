@@ -14,7 +14,7 @@ set(SNAKE_HEADERS
     SnakePosition.hpp
     SnakeSegments.hpp
     SnakeWorld.hpp
-)
+        Torus.cpp Torus.h)
 add_library(${TARGET_NAME} STATIC ${SNAKE_SOURCES} ${SNAKE_HEADERS})
 target_link_libraries(${TARGET_NAME} DynamicEvents)
 

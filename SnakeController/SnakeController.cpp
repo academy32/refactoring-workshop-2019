@@ -8,6 +8,7 @@
 
 #include "SnakeSegments.hpp"
 #include "SnakeWorld.hpp"
+#include "Torus.h"
 
 namespace Snake
 {
@@ -47,13 +48,21 @@ Position readFoodPosition(std::istream& istr)
 
 std::unique_ptr<World> readWorld(std::istream& istr, IPort& displayPort, IPort& foodPort)
 {
-    if (not checkControl(istr, 'W')) {
-        throw ConfigurationError();
-    }
+    char input;
+    istr >> input;
 
     auto worldDimension = readWorldDimension(istr);
     auto foodPosition = readFoodPosition(istr);
-    return std::make_unique<World>(displayPort, foodPort, worldDimension, foodPosition);
+
+    if(input == 'T'){
+        return std::make_unique<Torus>(displayPort, foodPort, worldDimension, foodPosition);
+    }
+    else if (input == 'W') {
+        return std::make_unique<World>(displayPort, foodPort, worldDimension, foodPosition);
+    }
+    else
+    throw ConfigurationError();
+
 }
 
 Direction readDirection(std::istream& istr)
